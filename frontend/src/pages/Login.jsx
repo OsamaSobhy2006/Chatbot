@@ -101,7 +101,6 @@ function Login() {
                     onSubmit={handleSubmit}
                 >
 
-                    {/* Email */}
                     <div className="input-group">
 
                         <input
@@ -120,7 +119,6 @@ function Login() {
 
                     </div>
 
-                    {/* Password */}
                     <div className="input-group">
 
                         <input
@@ -143,7 +141,6 @@ function Login() {
                         Login
                     </button>
 
-                    {/* Backend error */}
                     {serverError && (
                         <div className="auth-server-error">
                             {serverError}

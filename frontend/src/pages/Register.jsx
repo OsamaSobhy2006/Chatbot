@@ -21,6 +21,8 @@ function Register() {
         password: ''
     })
 
+    const [serverError, setServerError] = useState('')
+
     const handleChange = (e) => {
 
         const { name, value } = e.target
@@ -34,6 +36,8 @@ function Register() {
             ...errors,
             [name]: ''
         })
+
+        setServerError('')
     }
 
     const handleSubmit = async (e) => {
@@ -46,21 +50,18 @@ function Register() {
             password: ''
         }
 
-        // Name validation
         if (!form.name.trim()) {
             newErrors.name = 'Name is required'
         } else if (form.name.trim().length < 3) {
             newErrors.name = 'Name must be at least 3 characters'
         }
 
-        // Email validation
         if (!form.email.trim()) {
             newErrors.email = 'Email is required'
         } else if (!/\S+@\S+\.\S+/.test(form.email)) {
             newErrors.email = 'Please enter a valid email'
         }
 
-        // Password validation
         if (!form.password) {
             newErrors.password = 'Password is required'
         } else if (form.password.length < 6) {
@@ -69,7 +70,6 @@ function Register() {
 
         setErrors(newErrors)
 
-        // Stop request if validation failed
         if (Object.values(newErrors).some(error => error)) {
             return
         }
@@ -87,10 +87,10 @@ function Register() {
 
         } catch (error) {
 
-            setErrors({
-                ...newErrors,
-                email: error.response?.data?.message || 'Registration failed'
-            })
+            setServerError(
+                error.response?.data?.message ||
+                'Registration failed'
+            )
         }
     }
 
@@ -110,7 +110,6 @@ function Register() {
                     onSubmit={handleSubmit}
                 >
 
-                    {/* Name */}
                     <div className="input-group">
 
                         <input
@@ -128,7 +127,6 @@ function Register() {
 
                     </div>
 
-                    {/* Email */}
                     <div className="input-group">
 
                         <input
@@ -147,7 +145,6 @@ function Register() {
 
                     </div>
 
-                    {/* Password */}
                     <div className="input-group">
 
                         <input
@@ -169,6 +166,12 @@ function Register() {
                     <button type="submit">
                         Register
                     </button>
+
+                    {serverError && (
+                        <div className="auth-server-error">
+                            {serverError}
+                        </div>
+                    )}
 
                 </form>
 
