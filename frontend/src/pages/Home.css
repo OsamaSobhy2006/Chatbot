@@ -11,6 +11,7 @@ body {
 
 .home-page {
     min-height: 100vh;
+
     background:
         radial-gradient(
             circle at top right,
@@ -20,20 +21,26 @@ body {
         #0f172a;
 }
 
-/* Navbar */
+
+/* =========================
+   Navbar
+========================= */
 
 .navbar {
     height: 75px;
     padding: 0 8%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .logo {
     color: white;
     text-decoration: none;
+
     font-size: 24px;
     font-weight: 700;
 }
@@ -47,6 +54,7 @@ body {
 .nav-links a {
     color: #cbd5e1;
     text-decoration: none;
+
     font-size: 15px;
 }
 
@@ -54,21 +62,76 @@ body {
     color: white;
 }
 
+
+/* =========================
+   Navbar Buttons
+========================= */
+
 .register-btn {
     padding: 10px 20px;
+
     border-radius: 8px;
+
     background: #2563eb;
+
     color: white !important;
+
+    text-decoration: none;
+
+    border: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
 }
 
-/* Hero */
+.register-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* Logout button in navbar */
+
+.logout-nav-btn {
+    padding: 10px 20px;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    border: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.logout-nav-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   Hero
+========================= */
 
 .hero {
     min-height: calc(100vh - 75px);
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     text-align: center;
+
     padding: 40px 20px;
 }
 
@@ -78,17 +141,25 @@ body {
 
 .badge {
     display: inline-block;
+
     padding: 8px 16px;
+
     border-radius: 50px;
+
     background: rgba(37, 99, 235, 0.15);
+
     color: #60a5fa;
+
     border: 1px solid rgba(96, 165, 250, 0.2);
+
     margin-bottom: 25px;
 }
 
 .hero h1 {
     font-size: 64px;
+
     line-height: 1.1;
+
     margin: 0 0 25px;
 }
 
@@ -98,40 +169,179 @@ body {
 
 .hero p {
     max-width: 650px;
+
     margin: 0 auto 35px;
+
     color: #94a3b8;
+
     font-size: 18px;
+
     line-height: 1.7;
 }
 
+
+/* =========================
+   Hero Buttons
+========================= */
+
 .hero-buttons {
     display: flex;
+
     justify-content: center;
+
     gap: 15px;
 }
 
 .primary-btn,
 .secondary-btn {
     padding: 13px 25px;
+
     border-radius: 8px;
+
     text-decoration: none;
+
     font-weight: 600;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
 }
+
+
+/* Primary */
 
 .primary-btn {
     background: #2563eb;
+
     color: white;
+
+    border: 1px solid #2563eb;
+
+    transition: background 0.2s ease;
 }
 
 .primary-btn:hover {
     background: #1d4ed8;
+
+    color: white;
 }
 
+
+/* Secondary */
+
 .secondary-btn {
+    background: transparent;
+
     border: 1px solid #334155;
+
     color: white;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .secondary-btn:hover {
     background: #1e293b;
+
+    color: white;
+
+    border-color: #475569;
+}
+
+
+/* Logout hero button */
+
+.logout-hero-btn {
+    border: 1px solid #334155;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.logout-hero-btn:hover {
+    background: #1e293b;
+
+    color: white;
+
+    border-color: #475569;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .navbar {
+        height: auto;
+
+        padding: 20px;
+
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a,
+    .register-btn,
+    .logout-nav-btn {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 30px 20px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 300px;
+
+        margin: auto;
+    }
+
+    .primary-btn,
+    .secondary-btn,
+    .logout-hero-btn {
+        width: 100%;
+    }
+
 }

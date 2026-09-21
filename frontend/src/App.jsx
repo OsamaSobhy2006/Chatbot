@@ -1,7 +1,8 @@
 import {
     BrowserRouter,
     Routes,
-    Route
+    Route,
+    Navigate
 } from 'react-router-dom'
 
 import { AuthProvider } from './context/AuthContext'
@@ -11,21 +12,37 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Chat from './pages/Chat'
 import ProtectedRoute from './components/ProtectedRoute'
+import PublicRoute from './components/PublicRoute'
 
 function App() {
-
     return (
-        <BrowserRouter>
-            <AuthProvider>
+        <AuthProvider>
+            <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/chat" element={<ProtectedRoute><Chat/></ProtectedRoute>} />
+                    <Route path="/login" element={
+                            <PublicRoute>
+                                <Login />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route path="/register" element={
+                            <PublicRoute>
+                                <Register />
+                            </PublicRoute>
+                        }
+                    />
+                    <Route path="/chat" element={
+                            <ProtectedRoute>
+                                <Chat />
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route path="/" element={<Navigate to="/home" replace />}
+                    />
                 </Routes>
-            </AuthProvider>
-        </BrowserRouter>
+            </BrowserRouter>
+        </AuthProvider>
     )
 }
 
